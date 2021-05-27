@@ -1,6 +1,6 @@
-# Json-logger Extension
+# Json-logger Extension for Sentry
 
-## 2.0.1 version - Release notes
+## 1.0.0 version - Release notes
 
 Bug fixes:
 * Added support for large payloads
