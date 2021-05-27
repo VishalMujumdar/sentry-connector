@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Definition for fields used in the logger message processor",
+  "type": "object",
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "sdk": {
+        "default": "#[correlationId]",
+         "summary": "Hexadecimal string representing a uuid4 value. The length is exactly 32 characters. Dashes are not allowed. Has to be lowercase.",
+        "placement": {
+          "tab": "Advanced"
+        }
+      }
+    },
+    "message": {
+      "type": "string",
+      "sdk": {
+        "example": "Add a log message",
+        "required": true,
+        "summary": "Message to be logged"
+      }
+    },
+    "extra": {
+      "type": "string",
+      "javaType": "org.mule.runtime.extension.api.runtime.parameter.ParameterResolver<org.mule.runtime.api.metadata.TypedValue<java.io.InputStream>>",
+      "sdk": {
+        "default": "#[import modules::JSONLoggerModule output application/json ---\n{\n    payload: JSONLoggerModule::stringifyNonJSON(payload) \n}]",
+        "summary": "NOTE: Writing the entire payload every time across your application can cause serious performance issues",
+        "required": false,
+        "isContent": true
+      }
+    },
+    "exception": {
+      "type": "string",
+      "javaType": "org.mule.runtime.extension.api.runtime.parameter.ParameterResolver<org.mule.runtime.api.metadata.TypedValue<java.io.InputStream>>",
+      "sdk": {
+        "example": "Add a exception message",
+        "required": false,
+        "summary": "Exception details to be logged in case of excpetion."
+      }
+    },
+    "level": {
+      "type": "string",
+      "javaType": "org.mule.extension.jsonlogger.api.pojos.TracePoint",
+      "enum": [
+      	"debug",
+      	"error" , 
+      	"fatal" , 
+      	"warning" , 
+      	"info",
+        "START",
+        "BEFORE_TRANSFORM",
+        "AFTER_TRANSFORM",
+        "BEFORE_REQUEST",
+        "AFTER_REQUEST",
+        "FLOW",
+        "END",
+        "EXCEPTION"
+      ],
+      "sdk": {
+        "default": "START",
+        "summary": "Severity of logged message."
+      }
+    },
+    "type": {
+      "type": "string",
+        "sdk": {
+        "example": "info",
+        "required": true,
+        "summary": "Log Type that is getting logged like info"
+      }
+    },
+    "server_name": {
+      "type": "string",
+        "sdk": {
+        "example": "#[attributes.remoteAddress]",
+        "required": true,
+        "summary": "Identifies the host from which the event was recorded"
+      }
+    },
+    "priority": {
+      "type": "string",
+      "javaType": "org.mule.extension.jsonlogger.api.pojos.Priority",
+      "enum": [
+        "DEBUG",
+        "TRACE",
+        "INFO",
+        "WARN",
+        "ERROR"
+      ],
+      "sdk": {
+        "default": "INFO",
+        "summary": "Logger priority"
+      },
+      "note": "This field is mandatory. DON'T REMOVE"
+    },
+    "category": {
+      "type": "string",
+      "sdk": {
+        "required": false,
+        "summary": "If not set, by default will log to the org.mule.extension.jsonlogger.JsonLogger category"
+      },
+      "note": "This field is mandatory. DON'T REMOVE"
+    }
+  }
+}
