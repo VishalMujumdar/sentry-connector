@@ -2,17 +2,9 @@
 
 ## 1.0.0 version - Release notes
 
-Bug fixes:
-* Added support for large payloads
+About Sentry Connector:
+* This plugin will publish events / exceptions (application logs) as JSON objects. Application logs published by this particular plug-ins follows the data format that is used to publish logs to Sentry. This plug-in can be instrumented in Mule-Soft platform to publish application logs in requested format. 
 
-## 2.0.0 version - Release notes
-
-New features:
-* External Destinations
-* Data masking
-
-Improvements:
-* Field ordering
 
 More details in the coming blog post (stay tuned!)
 
