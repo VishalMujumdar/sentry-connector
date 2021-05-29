@@ -12,4 +12,4 @@ Log Event:
 
 Log Scope:
 * This pallet will publish log and provide details like time consumed in milliseconds for all the activities that is getting covered under particular scope. It will publish two logs one at the starting activity of Logger Scope and second log after completion of last activity in Logger Scope. It is majorly used to identify end-to-end time that got elapsed in any scope
-* 
+
